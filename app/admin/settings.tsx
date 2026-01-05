@@ -14,6 +14,8 @@ import {
 } from 'react-native';
 import { COLORS } from '../../constants';
 
+type IconName = React.ComponentProps<typeof Ionicons>['name'];
+
 const AdminSettings = () => {
     const router = useRouter();
     const [pushNotifications, setPushNotifications] = useState(true);
@@ -36,7 +38,12 @@ const AdminSettings = () => {
         );
     };
 
-    const settingsOptions = [
+    const settingsOptions: Array<{
+        id: string;
+        title: string;
+        icon: IconName;
+        onPress: () => void;
+    }> = [
         {
             id: 'profile',
             title: 'Profil Düzenle',
